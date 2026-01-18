@@ -10,7 +10,10 @@ export const connectDB = async () => {
     await mongoose.connect(mongoUri);
     console.log("✅ MongoDB connected successfully");
   } catch (error) {
-    console.error("❌ MongoDB connection error:", error);
+    console.error(
+      "❌ MongoDB connection error:",
+      error instanceof Error ? error.message : "Unknown error",
+    );
     process.exit(1); // exit with failure
     // status code 1 means failure
     // status code 0 means success
